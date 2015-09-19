@@ -1,8 +1,8 @@
 <li>
   <%= link_to sub.title, sub_url(sub) %>
-  <% if is_moderator?(current_user, sub) %>
-    <%= link_to "Edit", edit_sub_url(sub) %>
-    <%= button_to 'Delete', sub_url(sub), method: :delete %>
+  <% if is_moderator?(current_user, sub) %> | 
+    <%= link_to "Edit", edit_sub_url(sub) %> | 
+    <%= link_to 'Delete', sub_url(sub), method: :delete %>
   <% end %>
 
 

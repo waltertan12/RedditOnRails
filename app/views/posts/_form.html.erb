@@ -10,11 +10,11 @@
   <% end %>
 
 
-  <label for="post_title">Title: </label>
+  <label for="post_title">Title: </label><br>
   <input type="text" name="post[title]" value="<%= post.title %>">
   <br><br>
 
-  <label for="post_url">URL: </label>
+  <label for="post_url">URL: </label><br>
   <input type="text" name="post[url]" value="<%= post.url %>">
   <br><br>
 
@@ -27,8 +27,8 @@
   <% end %>
   <br><br>
 
-  <label for="post_content">Content: </label>
-  <textarea name="post[content]" rows="8" cols="40"><%= post.content %></textarea>
+  <label for="post_content">Content: </label><br>
+  <textarea name="post[content]" rows="8" cols="40"><%= post.content %></textarea><br>
 
   <input type="submit"  value="<%= button %>">
 </form>

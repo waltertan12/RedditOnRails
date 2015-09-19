@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+elmo   = User.create!(user_name: "elmo", password: "password")
+grouch = User.create!(user_name: "oscar", password: "password")
+bbird  = User.create!(user_name: "bigbird", password: "password")
+
+elmo.moderated_subs.create!(title: "Weightlifting", description: "Lift weights?")
+grouch.moderated_subs.create!(title: "Trash Cans", description: "My home")

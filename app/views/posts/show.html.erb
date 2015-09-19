@@ -1,5 +1,10 @@
-<h1> <%= @post.title %> </h1>
-<%= link_to "link", @post.url if @post.url %>
+<h1>
+  <% if @post.url.empty? %>
+    <%= @post.title %>
+  <% else %>
+    <%= link_to @post.title, @post.url %>
+  <% end %>
+</h1>
 <h3>
   by <%= @post.author.user_name %> made
   <%= time_ago_in_words(@post.updated_at) %> ago
@@ -10,7 +15,7 @@
 
 <hr>
 
-<h4>Comments (<%= @post.comments.count %> )</h4>
+<h4>Comments ( <%= @post.comments.count %> )</h4>
 <% @all_comments.each do |comment| %>
   <%= render partial: "comment", locals: { comment: comment } unless comment.parent_comment_id.nil?  %>
 <% end %>
