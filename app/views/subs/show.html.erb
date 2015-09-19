@@ -1,0 +1,12 @@
+<h1><%= @sub.title %></h1>
+Descripton
+<p>
+  <%= @sub.description %>
+</p>
+
+<h3>All the posts</h3>
+<%= render partial: 'post', collection: @sub.posts %>
+<hr>
+<%= link_to "Make new Post", new_post_url %>
+
+<%= link_to "Back to subs", subs_url %>

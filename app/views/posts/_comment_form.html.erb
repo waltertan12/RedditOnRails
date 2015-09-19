@@ -1,0 +1,9 @@
+<form class="" action="<%= comments_path %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="comment[post_id]" value="<%= post.id %>">
+  <label for="content">Content</label>
+  <textarea name="comment[content]" rows="8" cols="40"></textarea>
+
+  <br><br>
+  <input type="submit"  value="Sumbit">
+</form>

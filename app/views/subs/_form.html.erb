@@ -1,0 +1,17 @@
+<% action = sub.new_record? ? subs_path : sub_path(sub) %>
+<% button =  sub.new_record? ? "Create Sub" : "Edit Sub" %>
+
+<form action="<%= action%>" method="post">
+  <%= auth_token %>
+  <% unless sub.new_record? %>
+    <input type="hidden" name="_method" value="PATCH">
+  <% end %>
+  <label for="sub_title">Title: </label>
+  <input type="text" name="sub[title]" value="<%= sub.title %>">
+  <br><br>
+
+  <label for="sub_description">Description: </label>
+  <textarea name="sub[description]" rows="8" cols="40"><%= sub.description %></textarea>
+
+  <input type="submit"  value="<%= button %>">
+</form>

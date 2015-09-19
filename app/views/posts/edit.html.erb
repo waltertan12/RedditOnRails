@@ -1,0 +1,4 @@
+<h1>Edit Post</h1>
+<%= render 'form', post: @post, subs: @subs %>
+<%= button_to "Delete Post", post_url(@post.id), method: :delete %>
+<%= link_to 'Back to Subs', subs_url %>

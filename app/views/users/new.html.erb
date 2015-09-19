@@ -1,0 +1,17 @@
+<h1>Sign up!</h1>
+
+<form action="/user" method="post">
+  <%= auth_token %>
+  <label for="Username">Username</label><br>
+  <input type="text" name="user[user_name]"><br>
+
+  <br>
+  <label for="password">Password</label><br>
+  <input type="password" name="user[password]"><br>
+
+  <br>
+
+  <input type="submit" value="Submit">
+</form>
+
+<%= link_to "Already a member?", new_session_url %>

@@ -1,0 +1,14 @@
+<div>
+  <p>
+    Comment by <%= comment.author.user_name %>
+    <%= link_to "See Comment", comment_url(comment) %>
+  </p>
+  <p>
+    <%= comment.content %>
+  </p>
+  <ul>
+    <% @all_comments.each do |c1| %>
+      <%= render partial: "comment", locals: { comment: c1 } if c1.parent_comment_id == comment.id  %>
+    <% end %>
+  </ul>
+</div>
