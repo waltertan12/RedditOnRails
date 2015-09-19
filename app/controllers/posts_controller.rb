@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.includes(:author,:comments).find(params[:id])
-    @all_comments = @post.comments
+    @comments_by_parent_id = @post.comments_by_parent_id
     render :show
   end
 

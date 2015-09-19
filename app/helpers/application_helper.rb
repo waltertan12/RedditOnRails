@@ -22,4 +22,12 @@ module ApplicationHelper
 
     option.html_safe
   end
+
+  def made_or_edited(object)
+    if object.created_at == object.updated_at
+      "made"
+    else
+      "edited"
+    end
+  end
 end

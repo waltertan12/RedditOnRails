@@ -7,13 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'shared/flash' %>
-<%  if current_user %>
-  <p>
-    Hello, <%= current_user.user_name  %>! | <%= link_to "Log Out", session_url, method: :delete%>
-  </p>
-<% end %>
-<%= yield %>
-
+<div class="container">
+  <%= render 'shared/flash' %>
+  <%  if current_user %>
+    <p>
+      Hello, <%= current_user.user_name  %>! | <%= link_to "Log Out", session_url, method: :delete%>
+    </p>
+  <% end %>
+  <%= yield %>
+</div>
 </body>
 </html>

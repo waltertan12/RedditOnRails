@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'static_pages/index'
+
   resource :user
   resource :session, only: [:new, :create, :destroy]
   resources :subs

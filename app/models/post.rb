@@ -20,13 +20,17 @@ class Post < ActiveRecord::Base
     foreign_key: :author_id,
     primary_key: :id
 
-  # belongs_to :sub,
-  #   class_name: "Sub",
-  #   foreign_key: :sub_id,
-  #   primary_key: :id
   has_many :comments
   has_many :post_subs, inverse_of: :post, dependent: :destroy
   has_many :subs, through: :post_subs
+
+  def comments_by_parent_id
+    result = Hash.new { |h, k| h[k] = [] }
+    comments.each do |comment|
+      result[comment.parent_comment_id] << comment
+    end
+    result
+  end
 
   private
   def has_a_sub

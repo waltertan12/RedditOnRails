@@ -6,7 +6,7 @@
   <% end %>
 </h1>
 <h3>
-  by <%= @post.author.user_name %> made
+  by <%= @post.author.user_name %> <%= made_or_edited(@post) %>
   <%= time_ago_in_words(@post.updated_at) %> ago
 </h3>
 <p>
@@ -16,9 +16,12 @@
 <hr>
 
 <h4>Comments ( <%= @post.comments.count %> )</h4>
-<% @all_comments.each do |comment| %>
-  <%= render partial: "comment", locals: { comment: comment } unless comment.parent_comment_id.nil?  %>
+<% @comments_by_parent_id[nil].each do |comment| %>
+  <%= render partial: "comment", 
+             locals: { comment: comment, 
+                       comment_by_parent_id: @comments_by_parent_id } %>
 <% end %>
+
 <%= render partial: "comment_form", locals: { post: @post } %>
 
 <%  if current_user.id == @post.author_id %>
