@@ -52,11 +52,37 @@ class PostsController < ApplicationController
     else
       redirect_to post_url(@post.id), status: 404
     end
+  end
 
+  def upvote
+    vote(1)
+  end
+
+  def downvote
+    vote(-1)
   end
 
 
   private
+  def vote(up_or_down)
+    post = Post.find(params[:id])
+    voted = Vote.find_by(user_id: current_user.id,
+                          votable_id: post.id,
+                          votable_type: "Post")
+
+    vote = Vote.new(value: up_or_down,
+                    user_id: current_user.id,
+                    votable_type: "Post",
+                    votable_id: post.id)
+    if voted
+      voted.destroy
+      vote.save if voted.value != up_or_down
+    else
+      vote.save
+    end
+    redirect_to post_url(post)
+  end
+
   def post_params
     params.require(:post).permit(:title, :url, :content, sub_ids: [])
   end

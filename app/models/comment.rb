@@ -20,7 +20,7 @@ class Comment < ActiveRecord::Base
     primary_key: :id
 
   belongs_to :post
-  
+
   belongs_to :parent_comment,
     class_name: "Comment",
     foreign_key: :parent_comment_id,
@@ -31,4 +31,5 @@ class Comment < ActiveRecord::Base
     foreign_key: :parent_comment_id,
     primary_key: :id
 
+  has_many :votes, as: :votable, dependent: :destroy
 end

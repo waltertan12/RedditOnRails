@@ -10,6 +10,11 @@
   <%= time_ago_in_words(@post.updated_at) %> ago
 </h3>
 <p>
+  Score: <%= @post.count_votes[:score] %> |
+  <%= link_to "upvote", upvote_post_url(@post), method: :post %> |
+  <%= link_to "downvote", downvote_post_url(@post), method: :post %>
+</p>
+<p>
   <%= @post.content %>
 </p>
 

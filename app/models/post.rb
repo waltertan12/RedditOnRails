@@ -23,12 +23,25 @@ class Post < ActiveRecord::Base
   has_many :comments
   has_many :post_subs, inverse_of: :post, dependent: :destroy
   has_many :subs, through: :post_subs
+  has_many :votes, as: :votable, dependent: :destroy
 
   def comments_by_parent_id
     result = Hash.new { |h, k| h[k] = [] }
     comments.each do |comment|
       result[comment.parent_comment_id] << comment
     end
+    result
+  end
+
+  def count_votes
+    result = Hash.new(0)
+    votes = Vote.where(votable_type: "Post", votable_id: id)
+    result[:total] = votes.count
+
+    votes.each do |vote|
+      result[:score] += vote.value
+    end
+
     result
   end
 
