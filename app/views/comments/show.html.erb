@@ -1,16 +1,22 @@
-<h1>Comment by <%= @comment.author.user_name %></h1>
-<%= link_to "Back to Post", post_url(@comment.post_id) %>
-<p>
+<h1>Comment by 
+  <%= @comment.author.user_name %>
+  <%= made_or_edited(@comment) %>
+  <%= time_ago_in_words(@comment.updated_at) %> ago
+</h1>
+<p class="well">
   <%= @comment.content %>
 </p>
 
+<h3>Add Comment</h3>
 <form  action="<%= comments_path %>"  method="POST">
   <%= auth_token %>
   <input type="hidden" name="comment[parent_comment_id]" value="<%= @comment.id %>">
   <input type="hidden" name="comment[post_id]" value="<%= @comment.post_id%>">
-  <label for="content">Content</label>
+
   <textarea name="comment[content]" rows="8" cols="40"></textarea>
 
   <br><br>
-  <input type="submit"  value="Sumbit">
+  <input type="submit"  value="Submit">
 </form>
+<br>
+<%= link_to "Back to Post", post_url(@comment.post_id) %>

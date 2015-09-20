@@ -5,16 +5,16 @@
     <%= link_to @post.title, @post.url %>
   <% end %>
 </h1>
-<h3>
+<h4>
   by <%= @post.author.user_name %> <%= made_or_edited(@post) %>
   <%= time_ago_in_words(@post.updated_at) %> ago
-</h3>
+</h4>
 <p>
   Score: <%= @post.count_votes[:score] %> |
   <%= link_to "upvote", upvote_post_url(@post), method: :post %> |
   <%= link_to "downvote", downvote_post_url(@post), method: :post %>
 </p>
-<p>
+<p class="well">
   <%= @post.content %>
 </p>
 
@@ -32,4 +32,5 @@
 <%  if current_user.id == @post.author_id %>
   <%= link_to "Edit Post", edit_post_path(@post.id) %>
 <% end %>
+<br>
 <%= link_to "Back to subs", subs_url %>

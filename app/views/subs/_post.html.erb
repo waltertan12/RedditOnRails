@@ -3,8 +3,9 @@
   ( <%= post.count_votes[:score] %> )
   <%= link_to post.title, post_url(post) %>
 </p>
-<p>
+<p><em>
+  submitted by
   <%= post.author.user_name %> 
   <%= time_ago_in_words(post.created_at) %> 
-  ago
+  ago</em>
 </p>
